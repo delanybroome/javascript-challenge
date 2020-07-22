@@ -13,21 +13,20 @@ var tableData = data;
 /// Get a reference to the table body
 var tbody = d3.select("tbody");
 
-// Console.log the UFO data from data.js
-console.log(data);
 
 // Step Loop 
-data.forEach(function(UFO) {
-    console.log(UFO);
-    var row = tbody.append("tr");
-    });
+//data.forEach(function(UFO) {
+   // console.log(UFO);
+   // var row = tbody.append("tr");
+   // });
+
 //Step Object Entries and Filter Data
 // DateTime, City, State, Country, Shape, DuriationMinutes, comments
 
 data.forEach(function(UFO) {
     console.log(UFO);
     //table 
-    var row =tbody.append("tr");
+    var row = tbody.append("tr");
     //key values + object entries
     Object.entries(UFO).forEach(function([key, value]) {
         console.log(key, value);
@@ -41,8 +40,10 @@ var button = d3.select("#filter-btn");
 
 // Create Event Handles
 button.on("click", function() {
+    //clear table 
     tbody.html("");
     //input element 
+    var inputElement = d3.select("#datetime");
     var inputValue = inputElement.property("value");
     console.log(inputValue);
     console.log(tableData);
@@ -52,10 +53,16 @@ var filteredData = tableData.filter(tableData => tableData.datetime === inputVal
 console.log(filteredData);
 
 // Display the filtered dataset
-filteredData.forEach((report) => {
-    var row = tbody.append('tr');
-
-}
-
-
-
+filteredData.forEach((UFO) => {
+    //create table
+    var row = tbody.append("tr");
+    //Loop
+    Object.entries(UFO).forEach(function([key, value]) {
+        //append cell 
+        var cell = row.append("td");
+        cell.text(value);
+        console.log(key, value);
+    });
+});
+d3.selectAll("#filter-btn").on("click", clickEvent);
+});
