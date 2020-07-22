@@ -64,5 +64,4 @@ filteredData.forEach((UFO) => {
         console.log(key, value);
     });
 });
-d3.selectAll("#filter-btn").on("click", clickEvent);
 });
